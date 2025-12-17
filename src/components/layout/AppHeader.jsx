@@ -18,7 +18,7 @@ export default function AppHeader() {
   const [select, setSelect] = useState(false);
   const [coin, setCoin] = useState(null);
   const [modal, setModal] = useState(false);
-  const [drawer, setDrawer] = useState(false);
+  const [drawer, setDrawer] = useState(true);
   const { crypto } = useCrypto();
   const keypress = (event) => {
     if (event.key === "/") {
@@ -71,8 +71,9 @@ export default function AppHeader() {
         closable={{ "aria-label": "Close Button" }}
         onClose={() => setDrawer(false)}
         open={drawer}
+        destroyOnClose
       >
-       <AddAssetForm />
+       <AddAssetForm onClose={() => setDrawer(false)} />
       </Drawer>
     </Layout.Header>
   );
